@@ -59,9 +59,10 @@ public class TodoController {
 
     /* JSON DO POST
  {
-    "nome": "2025-03-11T15:00:00",
-    "descricao": 200.50,
-    "status": false
+    {
+    "nome": "teste",
+    "descricao": "teste teste teste"
+    }
 }
     */
 }

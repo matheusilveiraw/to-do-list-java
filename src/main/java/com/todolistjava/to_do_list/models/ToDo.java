@@ -17,7 +17,7 @@ public class ToDo {
     private String descricao;
 
     @Column(nullable = false)
-    private Boolean status;
+    private Boolean status = false;
 
     public Long getId() {
         return id;
