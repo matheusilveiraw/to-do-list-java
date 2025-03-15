@@ -93,4 +93,17 @@ public class TodoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizarToDo(@PathVariable Long id, @RequestBody ToDo todoAtualizado) {
+        try {
+            ToDo toDo = todoService.atualizarToDo(id, todoAtualizado);
+            return ResponseEntity.ok(toDo);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("To do não encontrada.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao atualizar to do: " + e.getMessage());
+        }
+    }
 }

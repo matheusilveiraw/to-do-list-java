@@ -50,5 +50,4 @@ public class ToDo {
     public void setStatus(Boolean status) {
         this.status = status;
     }
-
 }
