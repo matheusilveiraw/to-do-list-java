@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/todos")
@@ -65,4 +66,31 @@ public class TodoController {
     }
 }
     */
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarToDo(@PathVariable Long id) {
+        try {
+            Optional<ToDo> todoExistente = todoService.buscarPorId(id);
+
+            if (todoExistente.isEmpty()) {
+                Map<String, Object> response = new HashMap<>();
+                response.put("status", HttpStatus.NOT_FOUND.value());
+                response.put("message", "To do com ID " + id + " não encontrado.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            todoService.deletarTodo(id);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("status", HttpStatus.OK.value());
+            response.put("message", "To do deletado com sucesso.");
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+            response.put("message", "Erro ao deletar to do: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
 }
