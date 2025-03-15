@@ -16,4 +16,8 @@ public class TodoService {
     public List<ToDo> listarTodos() {
         return todoRepository.findAll();
     }
+
+    public ToDo criarTodo(ToDo toDo) {
+        return todoRepository.save(toDo);
+    }
 }

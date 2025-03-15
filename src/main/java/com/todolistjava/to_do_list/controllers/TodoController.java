@@ -2,12 +2,11 @@ package com.todolistjava.to_do_list.controllers;
 
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.services.TodoService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,7 @@ public class TodoController {
     private TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<?> listarUsuarios() {
+    public ResponseEntity<?> listarToDos() {
         try {
             List<ToDo> todos = todoService.listarTodos();
 
@@ -36,8 +35,33 @@ public class TodoController {
         } catch (Exception e) {
             Map<String, Object> response = new HashMap<>();
             response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-            response.put("message", "Erro ao listar usuários: " + e.getMessage());
+            response.put("message", "Erro ao listar to dos: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @PostMapping
+    public ResponseEntity<Map<String, Object>> criarToDo (@RequestBody ToDo toDo){
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            todoService.criarTodo(toDo);
+            response.put("status", HttpStatus.CREATED.value());
+            response.put("message", "To do criado com sucesso");
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (Exception e) {
+            response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+            response.put("message", "Erro ao criar o to do: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    response);
+        }
+    }
+
+    /* JSON DO POST
+ {
+    "nome": "2025-03-11T15:00:00",
+    "descricao": 200.50,
+    "status": false
+}
+    */
 }
