@@ -33,7 +33,6 @@ public class TodoService {
     public ToDo atualizarToDo(Long id, ToDo toDoAtualizado) {
         return todoRepository.findById(id).map(usuario -> {
             usuario.setNome(toDoAtualizado.getNome());
-            usuario.setStatus(toDoAtualizado.getStatus());
             usuario.setDescricao(toDoAtualizado.getDescricao());
             return todoRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("To do não encontrado"));
