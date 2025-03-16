@@ -62,7 +62,6 @@ git clone https://github.com/seu-usuario/nome-do-repositorio.git
 1. Crie um banco de dados no MySQL, por exemplo, `todo_db`.
 2. No projeto, localize o arquivo `application.properties` dentro do diretório `src/main/resources`.
 3. Atualize as configurações do banco de dados com suas credenciais.
-4. 
 ### Passo 3: Compilar e Executar o Projeto
 
 Navegue até o diretório raiz do projeto e execute um dos comandos abaixo:
