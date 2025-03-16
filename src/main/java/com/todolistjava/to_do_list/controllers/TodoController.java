@@ -106,4 +106,9 @@ public class TodoController {
                     .body("Erro ao atualizar to do: " + e.getMessage());
         }
     }
+// JSON DO PUT
+//    {
+//        "nome": "nome real da tarefa",
+//            "descricao": "fazer várias coisas"
+//    }
 }
