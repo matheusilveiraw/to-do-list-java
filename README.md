@@ -29,3 +29,15 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - `descrição` (detalhes sobre a tarefa)
 - `status` (indica se a tarefa está concluída ou não)
 
+## 📜 Log de Atualizações
+
+### 15/03/2025
+- **GET**: Implementada a busca de todas as tarefas.
+- **POST**: Implementado o endpoint para criação de tarefas.
+- **DELETE**: Implementada a exclusão de tarefas.
+- **PUT**: Implementada a atualização de tarefas.
+- **GET**: Criado endpoint para buscar tarefa individual.
+- **PUT**: Implementada a finalização de tarefa (alterando o status para concluída).
+
+---
+
