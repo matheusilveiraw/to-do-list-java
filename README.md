@@ -32,12 +32,12 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 ## 📜 Log de Atualizações
 
 ### 15/03/2025
-- **GET**: Implementada a busca de todas as tarefas.
-- **POST**: Implementado o endpoint para criação de tarefas.
-- **DELETE**: Implementada a exclusão de tarefas.
-- **PUT**: Implementada a atualização de tarefas.
-- **GET**: Criado endpoint para buscar tarefa individual.
-- **PUT**: Implementada a finalização de tarefa (alterando o status para concluída).
+- **GET**: Implementada a busca de todas as tarefas. (/api/todos)
+- **POST**: Implementado o endpoint para criação de tarefas. (/api/todos)
+- **DELETE**: Implementada a exclusão de tarefas. (/api/todos/id)
+- **PUT**: Implementada a atualização de tarefas. (/api/todos/id)
+- **GET**: Criado endpoint para buscar tarefa individual. (/api/todos/id)
+- **PUT**: Implementada a finalização de tarefa (alterando o status para concluída). (/api/todos/id/finalizar)
 
 ---
 
