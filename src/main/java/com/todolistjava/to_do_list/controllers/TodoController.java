@@ -133,5 +133,16 @@ public class TodoController {
 //            "descricao": "fazer várias coisas"
 //    }
 
-
+    @PutMapping("/{id}/finalizar")
+    public ResponseEntity<?> finalizarToDo(@PathVariable Long id) {
+        try {
+            ToDo toDoFinalizado = todoService.finalizarToDo(id);
+            return ResponseEntity.ok(toDoFinalizado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("To do não encontrada.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao finalizar to do: " + e.getMessage());
+        }
+    }
 }

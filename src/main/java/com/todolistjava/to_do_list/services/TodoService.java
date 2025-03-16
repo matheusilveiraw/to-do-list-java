@@ -31,10 +31,21 @@ public class TodoService {
     }
 
     public ToDo atualizarToDo(Long id, ToDo toDoAtualizado) {
-        return todoRepository.findById(id).map(usuario -> {
-            usuario.setNome(toDoAtualizado.getNome());
-            usuario.setDescricao(toDoAtualizado.getDescricao());
-            return todoRepository.save(usuario);
+        return todoRepository.findById(id).map(toDo -> {
+            toDo.setNome(toDoAtualizado.getNome());
+            toDo.setDescricao(toDoAtualizado.getDescricao());
+            return todoRepository.save(toDo);
         }).orElseThrow(() -> new RuntimeException("To do não encontrado"));
+    }
+
+    public ToDo finalizarToDo(Long id) {
+        Optional<ToDo> optionalToDo = todoRepository.findById(id);
+        if (!optionalToDo.isPresent()) {
+            throw new RuntimeException("To do não encontrada");
+        }
+
+        ToDo toDo = optionalToDo.get();
+        toDo.setStatus(true);
+        return todoRepository.save(toDo);
     }
 }
