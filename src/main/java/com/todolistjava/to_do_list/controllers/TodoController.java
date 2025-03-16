@@ -41,6 +41,27 @@ public class TodoController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarToDoPorId(@PathVariable Long id) {
+        try {
+            Optional<ToDo> toDo = todoService.buscarPorId(id);
+
+            if (toDo.isEmpty()) {
+                Map<String, Object> response = new HashMap<>();
+                response.put("status", HttpStatus.NOT_FOUND.value());
+                response.put("message", "To Do com ID " + id + " não encontrado.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            return ResponseEntity.ok(toDo.get());
+        } catch (Exception e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+            response.put("message", "Erro ao buscar o to do: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, Object>> criarToDo (@RequestBody ToDo toDo){
         Map<String, Object> response = new HashMap<>();
@@ -111,4 +132,6 @@ public class TodoController {
 //        "nome": "nome real da tarefa",
 //            "descricao": "fazer várias coisas"
 //    }
+
+
 }
