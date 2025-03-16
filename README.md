@@ -54,7 +54,7 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 Abra o terminal e execute o comando abaixo para clonar o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/matheusilveiraw/to-do-list-java
 ```
 
 ### Passo 2: Configurar o Banco de Dados
@@ -69,12 +69,6 @@ Navegue até o diretório raiz do projeto e execute um dos comandos abaixo:
 - **Utilizando o Maven para rodar a aplicação:**
 
 ```bash
-mvn spring-boot:run
-```
-
-### Compilando o projeto 
-
-```
 mvn spring-boot:run
 ```
 
