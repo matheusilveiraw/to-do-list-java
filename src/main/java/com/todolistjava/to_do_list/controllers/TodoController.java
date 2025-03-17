@@ -15,6 +15,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/todos")
+@CrossOrigin(origins = "http://localhost:4200") //p/ permitir requisições no angular
+
 public class TodoController {
     @Autowired
     private TodoService todoService;
