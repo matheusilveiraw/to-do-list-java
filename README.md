@@ -72,4 +72,26 @@ Navegue até o diretório raiz do projeto e execute um dos comandos abaixo:
 mvn spring-boot:run
 ```
 
-Se tudo estiver correto, o projeto já deve estar rodando na sua máquina!
+## 🎨 3. Rodar o Frontend (Angular)
+
+1. Abra o terminal e execute o comando abaixo para clonar o repositório:
+
+   ```sh
+   https://github.com/matheusilveiraw/to-do-list-front-java
+   
+1. Vá para a pasta do frontend:
+   ```sh
+   cd ../frontend
+
+2. Instale as dependências do Angular:
+   ```
+    npm install
+   ```
+   
+3. Inicie o projeto:
+ ```
+    ng serve --open
+ ```
+
+O frontend estará disponível em http://localhost:4200/.
+
