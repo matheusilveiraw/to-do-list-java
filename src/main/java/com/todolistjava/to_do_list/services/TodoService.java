@@ -53,4 +53,7 @@ public class TodoService {
         return todoRepository.findByStatus(true);
     }
 
+    public List<ToDo> listarTodosFazer() {
+        return todoRepository.findByStatus(false);
+    }
 }

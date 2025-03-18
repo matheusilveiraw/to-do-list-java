@@ -166,4 +166,23 @@ public class TodoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @GetMapping("/fazer")
+    public ResponseEntity<?> buscarTodosFazer() {
+        //retornar somente os to dos com status = false
+        try {
+            List<ToDo> todos = todoService.listarTodosFazer();
+
+            if (todos.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            }
+
+            return ResponseEntity.ok(todos);
+        } catch (Exception e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+            response.put("message", "Erro ao listar to dos: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
 }
