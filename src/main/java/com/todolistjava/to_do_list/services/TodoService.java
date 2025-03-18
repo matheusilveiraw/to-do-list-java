@@ -49,14 +49,6 @@ public class TodoService {
         return todoRepository.save(toDo);
     }
 
-    public List<ToDo> listarTodosFeitos() {
-        return todoRepository.findByStatus(true);
-    }
-
-    public List<ToDo> listarTodosFazer() {
-        return todoRepository.findByStatus(false);
-    }
-
     public List<ToDo> listarToDosPorStatus(boolean status) {
         return todoRepository.findByStatus(status);
     }
