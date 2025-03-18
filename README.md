@@ -39,6 +39,11 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - **GET**: Criado endpoint para buscar tarefa individual. (/api/todos/id)
 - **PUT**: Implementada a finalização de tarefa (alterando o status para concluída). (/api/todos/id/finalizar)
 
+### 17/03/2025
+- Criando o front para receber da forma mais básica possível os dados
+- Criado o componente task-list, aonde ficarão as tarefas;
+- Criado o componente header, aonde ficará o título e o botão de adicionar novas tarefas;
+
 ---
 
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
