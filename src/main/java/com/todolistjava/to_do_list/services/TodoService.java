@@ -56,4 +56,8 @@ public class TodoService {
     public List<ToDo> listarTodosFazer() {
         return todoRepository.findByStatus(false);
     }
+
+    public List<ToDo> listarToDosPorStatus(boolean status) {
+        return todoRepository.findByStatus(status);
+    }
 }

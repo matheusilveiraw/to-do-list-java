@@ -148,30 +148,20 @@ public class TodoController {
         }
     }
 
-    @GetMapping("/feitos")
-    public ResponseEntity<?> buscarTodosFeitos() {
-        //retornar somente os to dos com status = true
-        try {
-            List<ToDo> todos = todoService.listarTodosFeitos();
-
-            if (todos.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-            }
-
-            return ResponseEntity.ok(todos);
-        } catch (Exception e) {
-            Map<String, Object> response = new HashMap<>();
-            response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
-            response.put("message", "Erro ao listar to dos: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
-
     @GetMapping("/fazer")
     public ResponseEntity<?> buscarTodosFazer() {
+        return this.buscarTodosPorStatus(false);
+    }
+
+    @GetMapping("/feitos")
+    public ResponseEntity<?> buscarTodosFeitos() {
+        return this.buscarTodosPorStatus(true);
+    }
+
+    public ResponseEntity<?> buscarTodosPorStatus(boolean status) {
         //retornar somente os to dos com status = false
         try {
-            List<ToDo> todos = todoService.listarTodosFazer();
+            List<ToDo> todos = todoService.listarToDosPorStatus(status);
 
             if (todos.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
