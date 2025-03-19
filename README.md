@@ -44,6 +44,15 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Criado o componente task-list, aonde ficarão as tarefas;
 - Criado o componente header, aonde ficará o título e o botão de adicionar novas tarefas;
 
+### 18/03/2025
+- Manutenção no componente task-list;
+- Manutenção no componente todo-item;
+- Projeto recebendo os dados do back e listando dentro dos componentes corretos no front (só está muito feio);
+- Tabelas recebendo nome correto delas;
+- Dois novos end-points criados no back: "feitos", get que trás todos os to dos feito, e "fazer", trás todos os todos a fazer;
+- Front recebendo as rotas "feitos" e "fazer" com sucesso;
+- Front inserindo to dos no banco de dados pela rota post;
+
 ---
 
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
