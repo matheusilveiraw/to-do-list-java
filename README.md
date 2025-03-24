@@ -53,6 +53,16 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Front recebendo as rotas "feitos" e "fazer" com sucesso;
 - Front inserindo to dos no banco de dados pela rota post;
 
+### 22/03/2025
+
+- Componente de carregar criada para travar a tela quando o sistema estiver fazendo requisições HTTP;
+- Ao adicionar a to do pela interface do front, o front atualiza com o novo to do;
+- Tirei o nome e a descrição do to do item uma do lado da outra e botei abaixo;
+
+### 23/03/2025
+- Método finalizar funcionando pelo front;
+- Após finalizar tarefas, front atualiza as tarefas mostrando nas listas corretas;
+- Método editar funcionando pelo front;
 ---
 
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
