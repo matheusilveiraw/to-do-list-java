@@ -65,6 +65,13 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Método editar funcionando pelo front;
 ---
 
+### 24/03/2025
+
+- Melhoria no código do editar no front;
+- Método deletar funcionando pelo front;
+- Criação do componente de notificações;
+- Componente de notificações no adicionar to do feito e funcionando;
+
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
 
 ### Pré-requisitos
