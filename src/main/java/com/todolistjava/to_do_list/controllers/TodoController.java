@@ -1,5 +1,6 @@
 package com.todolistjava.to_do_list.controllers;
 
+import com.todolistjava.to_do_list.dtos.ToDoResponseDTO;
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.services.TodoService;
 import org.apache.coyote.Response;
@@ -118,7 +119,8 @@ public class TodoController {
     public ResponseEntity<?> atualizarToDo(@PathVariable UUID id, @RequestBody ToDo todoAtualizado) {
         try {
             ToDo toDo = todoService.atualizarToDo(id, todoAtualizado);
-            return ResponseEntity.ok(toDo);
+            ToDoResponseDTO responseDTO = new ToDoResponseDTO("To do editado com sucesso", toDo);
+            return ResponseEntity.ok(responseDTO);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("To do não encontrada.");
         } catch (Exception e) {
