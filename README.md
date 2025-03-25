@@ -72,6 +72,13 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Criação do componente de notificações;
 - Componente de notificações no adicionar to do feito e funcionando;
 
+### 25/03/2025:
+- Alterei o id para guid ao invés de long;
+- Componente de notificações melhorado, sucesso centralizado e erro sobrepondo outras telas!
+- Criado o layer 'dtos' no back;
+- Layer dtos funcionando apenas no editar to do tanto pelo front quanto no back (falta a parte de erros também!);
+
+
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
 
 ### Pré-requisitos
