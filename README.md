@@ -63,7 +63,6 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Método finalizar funcionando pelo front;
 - Após finalizar tarefas, front atualiza as tarefas mostrando nas listas corretas;
 - Método editar funcionando pelo front;
----
 
 ### 24/03/2025
 
@@ -78,6 +77,7 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Criado o layer 'dtos' no back;
 - Layer dtos funcionando apenas no editar to do tanto pelo front quanto no back (falta a parte de erros também!);
 
+---
 
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
 
