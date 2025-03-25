@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TodoService {
@@ -22,15 +23,15 @@ public class TodoService {
         return todoRepository.save(toDo);
     }
 
-    public Optional<ToDo> buscarPorId(Long id) {
+    public Optional<ToDo> buscarPorId(UUID id) {
         return todoRepository.findById(id);
     }
 
-    public void deletarTodo(Long id) {
+    public void deletarTodo(UUID id) {
         todoRepository.deleteById(id);
     }
 
-    public ToDo atualizarToDo(Long id, ToDo toDoAtualizado) {
+    public ToDo atualizarToDo(UUID id, ToDo toDoAtualizado) {
         return todoRepository.findById(id).map(toDo -> {
             toDo.setNome(toDoAtualizado.getNome());
             toDo.setDescricao(toDoAtualizado.getDescricao());
@@ -38,7 +39,7 @@ public class TodoService {
         }).orElseThrow(() -> new RuntimeException("To do não encontrado"));
     }
 
-    public ToDo finalizarToDo(Long id) {
+    public ToDo finalizarToDo(UUID id) {
         Optional<ToDo> optionalToDo = todoRepository.findById(id);
         if (!optionalToDo.isPresent()) {
             throw new RuntimeException("To do não encontrada");

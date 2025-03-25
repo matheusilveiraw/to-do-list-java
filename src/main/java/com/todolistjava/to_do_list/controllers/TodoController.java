@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/todos")
@@ -44,7 +41,7 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarToDoPorId(@PathVariable Long id) {
+    public ResponseEntity<?> buscarToDoPorId(@PathVariable UUID id) {
         try {
             Optional<ToDo> toDo = todoService.buscarPorId(id);
 
@@ -91,7 +88,7 @@ public class TodoController {
     */
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarToDo(@PathVariable Long id) {
+    public ResponseEntity<?> deletarToDo(@PathVariable UUID id) {
         try {
             Optional<ToDo> todoExistente = todoService.buscarPorId(id);
 
@@ -118,7 +115,7 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarToDo(@PathVariable Long id, @RequestBody ToDo todoAtualizado) {
+    public ResponseEntity<?> atualizarToDo(@PathVariable UUID id, @RequestBody ToDo todoAtualizado) {
         try {
             ToDo toDo = todoService.atualizarToDo(id, todoAtualizado);
             return ResponseEntity.ok(toDo);
@@ -136,7 +133,7 @@ public class TodoController {
 //    }
 
     @PutMapping("/{id}/finalizar")
-    public ResponseEntity<?> finalizarToDo(@PathVariable Long id) {
+    public ResponseEntity<?> finalizarToDo(@PathVariable UUID id) {
         try {
             ToDo toDoFinalizado = todoService.finalizarToDo(id);
             return ResponseEntity.ok(toDoFinalizado);

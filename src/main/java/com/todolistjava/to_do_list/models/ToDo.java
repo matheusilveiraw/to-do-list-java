@@ -1,15 +1,14 @@
 package com.todolistjava.to_do_list.models;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "todos")
 public class ToDo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(nullable = false, length = 100)
     private String nome;
@@ -19,11 +18,11 @@ public class ToDo {
     @Column(nullable = false)
     private Boolean status = false;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
