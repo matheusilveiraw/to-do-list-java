@@ -1,5 +1,6 @@
 package com.todolistjava.to_do_list.controllers;
 
+import com.todolistjava.to_do_list.dtos.ErrorResponseDTO;
 import com.todolistjava.to_do_list.dtos.ToDoResponseDTO;
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.services.TodoService;
@@ -122,10 +123,11 @@ public class TodoController {
             ToDoResponseDTO responseDTO = new ToDoResponseDTO("To do editado com sucesso", toDo);
             return ResponseEntity.ok(responseDTO);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("To do não encontrada.");
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("To do não encontrada.", HttpStatus.NOT_FOUND.value());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erro ao atualizar to do: " + e.getMessage());
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("Erro ao atualizar to do: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 // JSON DO PUT
