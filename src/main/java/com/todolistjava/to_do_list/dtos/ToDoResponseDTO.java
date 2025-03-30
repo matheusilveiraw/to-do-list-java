@@ -3,7 +3,7 @@ package com.todolistjava.to_do_list.dtos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.todolistjava.to_do_list.models.ToDo;
 public class ToDoResponseDTO {
-
+    //para saídas
     @JsonProperty("message")
     private String message;
 

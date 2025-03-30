@@ -1,6 +1,7 @@
 package com.todolistjava.to_do_list.services;
 
 
+import com.todolistjava.to_do_list.dtos.ToDoRequestDTO;
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,14 @@ public class TodoService {
         todoRepository.deleteById(id);
     }
 
-    public ToDo atualizarToDo(UUID id, ToDo toDoAtualizado) {
-        return todoRepository.findById(id).map(toDo -> {
-            toDo.setNome(toDoAtualizado.getNome());
-            toDo.setDescricao(toDoAtualizado.getDescricao());
-            return todoRepository.save(toDo);
-        }).orElseThrow(() -> new RuntimeException("To do não encontrado"));
+    public ToDo atualizarToDo(UUID id, ToDoRequestDTO todoDTO) {
+        ToDo toDo = todoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("To do não encontrada."));
+
+        toDo.setNome(todoDTO.getNome());
+        toDo.setDescricao(todoDTO.getDescricao());
+
+        return todoRepository.save(toDo);
     }
 
     public ToDo finalizarToDo(UUID id) {

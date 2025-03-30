@@ -1,6 +1,7 @@
 package com.todolistjava.to_do_list.dtos;
 
 public class ErrorResponseDTO {
+    //para erros da api
     private String message;
     private int status;
 

@@ -1,14 +1,17 @@
 package com.todolistjava.to_do_list.controllers;
 
 import com.todolistjava.to_do_list.dtos.ErrorResponseDTO;
+import com.todolistjava.to_do_list.dtos.ToDoRequestDTO;
 import com.todolistjava.to_do_list.dtos.ToDoResponseDTO;
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.services.TodoService;
+import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.*;
 
@@ -117,19 +120,19 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarToDo(@PathVariable UUID id, @RequestBody ToDo todoAtualizado) {
+    public ResponseEntity<?> atualizarToDo(@PathVariable UUID id, @Valid @RequestBody ToDoRequestDTO todoDTO) {
         try {
-            ToDo toDo = todoService.atualizarToDo(id, todoAtualizado);
+            ToDo toDo = todoService.atualizarToDo(id, todoDTO);
             ToDoResponseDTO responseDTO = new ToDoResponseDTO("To do editado com sucesso", toDo);
             return ResponseEntity.ok(responseDTO);
         } catch (RuntimeException e) {
-            ErrorResponseDTO errorResponse = new ErrorResponseDTO("To do não encontrada.", HttpStatus.NOT_FOUND.value());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("To do não encontrada.");
         } catch (Exception e) {
-            ErrorResponseDTO errorResponse = new ErrorResponseDTO("Erro ao atualizar to do: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao atualizar to do: " + e.getMessage());
         }
     }
+
 // JSON DO PUT
 //    {
 //        "nome": "nome real da tarefa",
