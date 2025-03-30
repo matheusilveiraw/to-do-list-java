@@ -4,6 +4,7 @@ package com.todolistjava.to_do_list.services;
 import com.todolistjava.to_do_list.dtos.ToDoRequestDTO;
 import com.todolistjava.to_do_list.models.ToDo;
 import com.todolistjava.to_do_list.repositories.TodoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class TodoService {
 
     public ToDo atualizarToDo(UUID id, ToDoRequestDTO todoDTO) {
         ToDo toDo = todoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("To do não encontrada."));
+                .orElseThrow(() -> new EntityNotFoundException("To do não encontrado."));
 
         toDo.setNome(todoDTO.getNome());
         toDo.setDescricao(todoDTO.getDescricao());
